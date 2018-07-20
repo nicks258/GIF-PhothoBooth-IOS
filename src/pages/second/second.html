@@ -1,0 +1,16 @@
+<ion-content padding no-bounce>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Name</ion-label>
+      <ion-input name= "name" [(ngModel)]="name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input name= "email" [(ngModel)]="email" type="email"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button (click)="enter()"  ion-button block>LOGIN</button>
+</ion-content>

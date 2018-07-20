@@ -6,25 +6,57 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import {SplashPage} from "../pages/splash/splash";
+import {CameraPage} from "../pages/camera/camera";
+import {SecondPage} from "../pages/second/second";
+import {NativeStorage} from "@ionic-native/native-storage";
+import {ThanksPage} from "../pages/thanks/thanks";
+
+import {CameraPreview} from "@ionic-native/camera-preview";
+import { GlobalProvider } from '../providers/global/global';
+import {PreviewPage} from "../pages/preview/preview";
+import { HttpModule} from "@angular/http";
+import {OptionPage} from "../pages/option/option";
+import {PreviewGifPage} from "../pages/preview-gif/preview-gif";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SplashPage,
+    SecondPage,
+    ThanksPage,
+    OptionPage,
+    CameraPage,
+    PreviewPage,
+    PreviewGifPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp,{scrollAssist:false,
+      autoFocusAssist:false}),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SecondPage,
+    SplashPage,
+    OptionPage,
+    PreviewPage,
+    PreviewGifPage,
+    ThanksPage,
+    CameraPage,
   ],
   providers: [
     StatusBar,
+    NativeStorage,
+    CameraPreview,
+    HttpModule,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GlobalProvider
   ]
 })
 export class AppModule {}
