@@ -28,20 +28,10 @@ export class CameraPage {
   base64ImageData = [];
   imageLength = 0;
   // cameraCounter = 4;
-  cameraPreviewOpts: CameraPreviewOptions = {
-    x: 140,
-    y: 0,
-    width: window.screen.width,
-    height: window.screen.height,
-    camera: 'front',
-    tapPhoto: false,
-    previewDrag: false,
-    toBack: true,
-    alpha: 1,
-  };
+
   pictureOpts: CameraPreviewPictureOptions = {
-    width: 2080,
-    height: 1280,
+    width: 1024,
+    height: 768,
     quality: 85
   };
 
@@ -52,7 +42,18 @@ export class CameraPage {
     this.imageLength = this.navParams.get("length");
     this.backgroundImagesLength = 0;
     let env = this;
-    env.cameraPreview.startCamera(env.cameraPreviewOpts).then(
+    const cameraPreviewOpts: CameraPreviewOptions = {
+      x: 0,
+      y: 0,
+      width:1024,
+      height:768,
+      camera: 'rear',
+      tapPhoto: false,
+      previewDrag: false,
+      toBack: true,
+      alpha: 1,
+    };
+    env.cameraPreview.startCamera(cameraPreviewOpts).then(
       (res) => {
 
       }, (err) => {
@@ -77,7 +78,7 @@ export class CameraPage {
         env.base64ImageData.push(imageData);
         console.log("length->> ");
       }, (err) => {
-        alert(err);
+        // alert(err);
       });
       env.backgroundImagesLength = env.backgroundImagesLength + 1;
     }

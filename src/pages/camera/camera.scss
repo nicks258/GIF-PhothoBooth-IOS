@@ -2,9 +2,8 @@ page-camera {
 
   .background-camera{
     background: url("../assets/imgs/gif_frame.png")  no-repeat center center;
-    background-size: 100% 100%;
+    background-size: cover;
     background-position: 100% 100%;
-    background-color: #ffffff;
     background-attachment: fixed;
   }
 
