@@ -95,7 +95,7 @@ export class CameraPage {
         },(err)=>{
           console.log("Whoops!! Camera stop not working " + err);
         });
-      },100);
+      },50);
 
     }
   }
