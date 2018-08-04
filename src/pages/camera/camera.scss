@@ -6,6 +6,21 @@ page-camera {
     background-position: 100% 100%;
     background-attachment: fixed;
   }
+  .btn-1
+  {
+    background-color: #ae2086;
+    color: #fcb616;
+    padding: 15px 30px;
+    position: absolute;
+    font-size: 32px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 4px solid #fcb616;
+    border-radius: 15px;
+  }
+
 
 }
 html, body, ion-app, ion-content, ion-page, .nav-decor {

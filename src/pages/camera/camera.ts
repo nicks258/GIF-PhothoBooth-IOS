@@ -25,6 +25,7 @@ export class CameraPage {
   backgroundImages = [];
   backgroundImagesLength;
   handle;
+  hideMe:boolean = true;
   base64ImageData = [];
   imageLength = 0;
   // cameraCounter = 4;
@@ -38,7 +39,7 @@ export class CameraPage {
   private picture;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public native: NativeStorage, public cameraPreview: CameraPreview, public global: GlobalProvider) {
-    this.base64ImageData = this.navParams.get("imageData");
+    // this.base64ImageData = this.navParams.get("imageData");
     this.imageLength = this.navParams.get("length");
     this.backgroundImagesLength = 0;
     let env = this;
@@ -59,11 +60,6 @@ export class CameraPage {
       }, (err) => {
         console.log("Error " + err);
       });
-    setInterval(function () {
-      env.takeImage();
-    }, 1000)
-
-
   }
 
   ionViewDidLoad() {
@@ -76,26 +72,40 @@ export class CameraPage {
       env.cameraPreview.takePicture(env.pictureOpts).then((imageData) => {
         // alert(imageData);
         env.base64ImageData.push(imageData);
+        env.backgroundImagesLength = env.backgroundImagesLength + 1;
         console.log("length->> ");
       }, (err) => {
         // alert(err);
       });
-      env.backgroundImagesLength = env.backgroundImagesLength + 1;
+
     }
     else {
       console.log("Clear");
       for (let o = 0; o < 1000; o++) {
         clearInterval(o);
       }
-      env.cameraPreview.stopCamera();
-      env.navCtrl.push(ThanksPage, {imageData: env.base64ImageData, imageLength: env.imageLength}, {
-        animate: true,
-        animation: 'transition',
-        duration: 300,
-        direction: 'forward'
-      });
-    }
+      setTimeout(function () {
+        env.cameraPreview.stopCamera().then((success)=>{
+          env.navCtrl.push(ThanksPage, {imageData: env.base64ImageData, imageLength: env.imageLength}, {
+            animate: true,
+            animation: 'transition',
+            duration: 300,
+            direction: 'forward'
+          });
+        },(err)=>{
+          console.log("Whoops!! Camera stop not working " + err);
+        });
+      },100);
 
+    }
+  }
+
+  clickImage(){
+    let env = this;
+    this.hideMe = false;
+    setInterval(function () {
+      env.takeImage();
+    }, 1000)
   }
 }
 

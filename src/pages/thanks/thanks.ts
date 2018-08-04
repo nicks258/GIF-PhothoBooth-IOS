@@ -4,6 +4,8 @@ import {GlobalProvider} from "../../providers/global/global";
 import {NativeStorage} from "@ionic-native/native-storage";
 import {PreviewPage} from "../preview/preview";
 import {Http} from "@angular/http";
+import {CameraPage} from "../camera/camera";
+import {SecondPage} from "../second/second";
 
 /**
  * Generated class for the ThanksPage page.
@@ -37,7 +39,7 @@ export class ThanksPage {
       setTimeout(function () {
 
         setInterval(function () {
-          console.log("length " + env.baseStrings.length);
+          // console.log("length " + env.baseStrings.length);
           if(env.baseStrings.length>0){
             if(env.y<4){
               env.fileName0 = "data:image/png;base64," + env.baseStrings[env.y];
@@ -212,4 +214,25 @@ export class ThanksPage {
 
   }
 
+  retake() {
+    for (let o = 0; o < 1000; o++) {
+      clearInterval(o);
+    }
+    let env = this;
+    setTimeout(function () {
+      env.navCtrl.push(CameraPage,{animate: true, animation: 'transition', duration: 300, direction: 'forward'})
+    },100);
+
+  }
+
+  sent(){
+    for (let o = 0; o < 1000; o++) {
+      clearInterval(o);
+    }
+    let env = this;
+    setTimeout(function () {
+      env.navCtrl.push(SecondPage,{animate: true, animation: 'transition', duration: 300, direction: 'forward'})
+    },100);
+
+  }
 }
