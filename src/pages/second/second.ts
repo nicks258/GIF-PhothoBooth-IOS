@@ -40,15 +40,15 @@ export class SecondPage {
       alert("Enter Name/Email")
     }
     else {
-      this.native.setItem("name", this.name).then(value => {
-        console.log("saved->" + value);
-      }), error => console.error('Error storing item', error);
-      this.native.setItem("email", this.email);
+      // this.native.setItem("name", this.name).then(value => {
+      //   console.log("saved->" + value);
+      // }, (error) => console.error('Error storing item', error));
+      // this.native.setItem("email", this.email);
       console.log("name->" + this.name + " -> " + this.email);
       let env = this;
       // this.native.setItem("backgroundImages",JSON.stringify(this.backgroundImages));
       this.native.setItem("backgroundImages", JSON.stringify(this.backgroundImages));
-      this.navCtrl.push(CameraPage,{imageData:env.imageData,length:env.length}, {animate: true, animation: 'transition', duration: 300, direction: 'forward'});
+      this.navCtrl.push(CameraPage,{imageData:env.imageData,length:env.length,name:env.name,email:env.email}, {animate: true, animation: 'transition', duration: 300, direction: 'forward'});
     }
   }
 

@@ -27,6 +27,8 @@ export class CameraPage {
   handle;
   hideMe:boolean = true;
   base64ImageData = [];
+  name;
+  email;
   imageLength = 0;
   // cameraCounter = 4;
 
@@ -41,6 +43,8 @@ export class CameraPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public native: NativeStorage, public cameraPreview: CameraPreview, public global: GlobalProvider) {
     // this.base64ImageData = this.navParams.get("imageData");
     this.imageLength = this.navParams.get("length");
+    this.name  = this.navParams.get('name');
+    this.email = this.navParams.get('email');
     this.backgroundImagesLength = 0;
     let env = this;
     const cameraPreviewOpts: CameraPreviewOptions = {
@@ -86,7 +90,7 @@ export class CameraPage {
       }
       setTimeout(function () {
         env.cameraPreview.stopCamera().then((success)=>{
-          env.navCtrl.push(ThanksPage, {imageData: env.base64ImageData, imageLength: env.imageLength}, {
+          env.navCtrl.push(ThanksPage, {imageData: env.base64ImageData, imageLength: env.imageLength,name:env.name,email:env.email}, {
             animate: true,
             animation: 'transition',
             duration: 300,
