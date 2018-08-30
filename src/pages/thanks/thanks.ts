@@ -34,31 +34,31 @@ export class ThanksPage {
   baseStrings = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,public global:GlobalProvider,public native:NativeStorage,public loadingCtrl:LoadingController , public http:Http) {
 
-    // let env = this;
-    // env.baseStrings =  navParams.get("imageData");
-    // env.name = navParams.get('name');
-    // env.email = this.navParams.get('email');
-    //   setTimeout(function () {
-    //     setInterval(function () {
-    //       // console.log("length " + env.baseStrings.length);
-    //       if(env.baseStrings.length>0){
-    //         if(env.y<4){
-    //           env.fileName0 = "data:image/png;base64," + env.baseStrings[env.y];
-    //           env.y++;
-    //         }
-    //         else {
-    //           env.y = 0;
-    //           env.fileName0 = "data:image/png;base64," + env.baseStrings[env.y];
-    //           env.y++;
-    //         }
-    //         console.log("Y number " + env.y);
-    //       }
-    //       else{
-    //         console.log("Its empty")
-    //       }
-    //       },300);
-    //
-    //   },200)
+    let env = this;
+    env.baseStrings =  navParams.get("imageData");
+    env.name = navParams.get('name');
+    env.email = this.navParams.get('email');
+      setTimeout(function () {
+        setInterval(function () {
+          // console.log("length " + env.baseStrings.length);
+          if(env.baseStrings.length>0){
+            if(env.y<4){
+              env.fileName0 = "data:image/png;base64," + env.baseStrings[env.y];
+              env.y++;
+            }
+            else {
+              env.y = 0;
+              env.fileName0 = "data:image/png;base64," + env.baseStrings[env.y];
+              env.y++;
+            }
+            console.log("Y number " + env.y);
+          }
+          else{
+            console.log("Its empty")
+          }
+          },300);
+
+      },200)
   }
 
   ionViewDidLoad() {
@@ -72,7 +72,7 @@ export class ThanksPage {
     env.fileName2 = env.baseStrings[2];
     env.fileName3 = env.baseStrings[3];
     let loadingPopup = this.loadingCtrl.create({
-      content: "Fetching Location...",
+      content: "Sending Email ...",
       spinner: 'circles'
     });
     loadingPopup.present();

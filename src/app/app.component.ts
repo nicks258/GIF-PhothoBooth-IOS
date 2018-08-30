@@ -14,7 +14,7 @@ import {PreviewGifPage} from "../pages/preview-gif/preview-gif";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ThanksPage;
+  rootPage:any = SecondPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -35,20 +35,33 @@ export class SecondPage {
   }
 
 
-  enter(){
-    if(this.email.length==0 || this.name.length==0){
+  enter() {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (this.name == null || this.email == null) {
       alert("Enter Name/Email")
     }
     else {
-      // this.native.setItem("name", this.name).then(value => {
-      //   console.log("saved->" + value);
-      // }, (error) => console.error('Error storing item', error));
-      // this.native.setItem("email", this.email);
-      console.log("name->" + this.name + " -> " + this.email);
-      let env = this;
-      // this.native.setItem("backgroundImages",JSON.stringify(this.backgroundImages));
-      this.native.setItem("backgroundImages", JSON.stringify(this.backgroundImages));
-      this.navCtrl.push(CameraPage,{imageData:env.imageData,length:env.length,name:env.name,email:env.email}, {animate: true, animation: 'transition', duration: 300, direction: 'forward'});
+      if (!re.test(this.email)) {
+        // Invalid Email
+        alert("Email is not Valid");
+      }
+      else {
+        // this.native.setItem("name", this.name).then(value => {
+        //   console.log("saved->" + value);
+        // }, (error) => console.error('Error storing item', error));
+        // this.native.setItem("email", this.email);
+        console.log("name->" + this.name + " -> " + this.email);
+        let env = this;
+        // this.native.setItem("backgroundImages",JSON.stringify(this.backgroundImages));
+        this.native.setItem("backgroundImages", JSON.stringify(this.backgroundImages));
+        this.navCtrl.push(CameraPage, {
+          imageData: env.imageData,
+          length: env.length,
+          name: env.name,
+          email: env.email
+        }, {animate: true, animation: 'transition', duration: 300, direction: 'forward'});
+      }
     }
   }
 

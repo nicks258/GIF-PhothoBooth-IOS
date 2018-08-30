@@ -33,8 +33,8 @@ export class CameraPage {
   // cameraCounter = 4;
 
   pictureOpts: CameraPreviewPictureOptions = {
-    width: 1024,
-    height: 768,
+    width: 1365,
+    height: 1024,
     quality: 85
   };
 
@@ -49,9 +49,9 @@ export class CameraPage {
     let env = this;
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
-      y: 0,
-      width:1024,
-      height:768,
+      y: 20,
+      width: 1024,
+      height: 768,
       camera: 'rear',
       tapPhoto: false,
       previewDrag: false,
