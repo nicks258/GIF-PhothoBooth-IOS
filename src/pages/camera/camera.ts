@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {NativeStorage} from "@ionic-native/native-storage";
 import {CameraPreview, CameraPreviewOptions, CameraPreviewPictureOptions} from "@ionic-native/camera-preview";
 import {HomePage} from "../home/home";
@@ -40,7 +40,7 @@ export class CameraPage {
 
   private picture;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public native: NativeStorage, public cameraPreview: CameraPreview, public global: GlobalProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public native: NativeStorage, public cameraPreview: CameraPreview,public loadingCtrl:LoadingController, public global: GlobalProvider) {
     // this.base64ImageData = this.navParams.get("imageData");
     this.imageLength = this.navParams.get("length");
     this.name  = this.navParams.get('name');
@@ -49,7 +49,7 @@ export class CameraPage {
     let env = this;
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
-      y: 50,
+      y: 68,
       width: 1024,
       height: 768,
       camera: 'rear',
@@ -84,18 +84,19 @@ export class CameraPage {
 
     }
     else {
+      let loadingPopup = this.loadingCtrl.create({
+        content: "Generating your GIF ...",
+        spinner: 'circles'
+      });
+      loadingPopup.present();
       console.log("Clear");
       for (let o = 0; o < 1000; o++) {
         clearInterval(o);
       }
       setTimeout(function () {
         env.cameraPreview.stopCamera().then((success)=>{
-          env.navCtrl.push(ThanksPage, {imageData: env.base64ImageData, imageLength: env.imageLength,name:env.name,email:env.email}, {
-            animate: true,
-            animation: 'transition',
-            duration: 300,
-            direction: 'forward'
-          });
+          loadingPopup.dismiss();
+          env.navCtrl.push(ThanksPage, {imageData: env.base64ImageData, imageLength: env.imageLength,name:env.name,email:env.email});
         },(err)=>{
           console.log("Whoops!! Camera stop not working " + err);
         });

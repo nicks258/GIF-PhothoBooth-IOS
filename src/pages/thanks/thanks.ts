@@ -111,7 +111,7 @@ export class ThanksPage {
     let env = this;
     setTimeout(function () {
       env.navCtrl.push(CameraPage,{name:env.name,email:env.email},{animate: true, animation: 'transition', duration: 300, direction: 'forward'})
-    },100);
+    },500);
   }
 
   sent(){
