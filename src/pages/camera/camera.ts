@@ -49,7 +49,7 @@ export class CameraPage {
     let env = this;
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
-      y: 20,
+      y: 50,
       width: 1024,
       height: 768,
       camera: 'rear',
